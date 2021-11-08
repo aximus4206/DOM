@@ -1,0 +1,305 @@
+body{
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    padding: 40px 0;
+    background: #060c21;
+    color: #fff;
+}
+
+.cards__item{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card{
+    position: relative;
+    box-sizing: border-box;
+    width: 30%;
+    min-height: 367px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background: #060c21;
+
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -1;
+}
+  
+.card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -2;
+    filter: blur(40px);
+}
+
+.card::before,
+.card::after {
+  background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
+}
+
+
+.card-container{
+    display: flex;
+}
+
+.card p,h3{
+    margin-right: 15px;
+}
+
+.card h3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardButtonContainer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.fullname{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.about{
+    display: flex;
+    justify-content: center;
+}
+
+.about h1{
+    position: relative;
+    padding: 20px;
+    margin-bottom: 60px;
+    width: max-content;
+    background: #060c21;
+}
+
+.about h1::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -1;
+}
+  
+.about h1::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -2;
+    filter: blur(40px);
+}
+
+.about h1::before,
+.about h1::after {
+  background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.create{
+    position: relative;
+    display: flex;
+    padding: 30px 60px;
+    width: 25%;
+    background: #060c21;
+}
+
+.create::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -1;
+}
+  
+.create::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -2;
+    filter: blur(40px);
+}
+
+.create::before,
+.create::after {
+  background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
+}
+
+
+.create input{
+    width: 200px;
+    margin-right: 20px;
+    background: #060c21;
+    border: 1px solid #00bcd4;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.create input::placeholder{
+    color: #fff;
+}
+
+button{
+    padding: 3px 5px;
+    margin-right: 15px;
+    background: transparent;
+    border-color: #3498db;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    border-radius: 5px;
+}
+
+button:hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #89ff00;
+}
+
+
+.information{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 60px;
+}
+
+.information div{
+    position: relative;
+    padding: 5px 15px;
+    background: #060c21;
+}
+
+.information div::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -1;
+}
+  
+.information div::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -2;
+    filter: blur(40px);
+}
+
+.information div::before,
+.information div::after {
+  background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
+}
+
+.modal{
+    position: fixed;
+    top: -1.7vh;
+    left: 33.5vw;
+    width: 100vw;
+    height: max-content;
+    display: none;
+}
+
+.modal.active{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    padding: 15px;
+    background: #060c21;
+}
+
+.modal.active::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -1;
+}
+  
+.modal.active::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -2;
+    filter: blur(40px);
+}
+
+.modal.active::before,
+.modal.active::after {
+  background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
+}
+
+.modal__window input{
+    border: 1px solid #00bcd4;
+    border-radius: 3px;
+    background: #060c21;
+    padding: 3px 10px;
+    color: #fff;
+}
+
+.modal__window input::placeholder{
+    color: #fff;
+}
+
+.modal-check{
+    display: flex;
+    align-items: center;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: space-between;
+}
