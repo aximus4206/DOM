@@ -130,8 +130,8 @@ class BankView {
             <input class="input" type="text" placeholder="Type client Currency " name="currency"> 
         </div>
         <div class="modal-check">
-            <p> Status (active/inactive) </p>
-            <input class="check" type="checkbox" placeholder="Type Client status " name="isActive"> 
+            <p> Status (active) </p>
+            <input class="check" type="checkbox" name="isActive"> 
         </div>
         `;
 
@@ -218,8 +218,10 @@ class BankView {
     }
 
     deleteClient(index) {
+        this.information.innerHTML = ' ';
         this.data.splice(index, 1);
         this.showClient();
+        this.aboutBank();
     }
 
     modifyClient(event, i) {

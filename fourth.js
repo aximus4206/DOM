@@ -592,7 +592,7 @@ const bankClients = [{
             active: false,
             activetedDate: '19.10.2015',
             expiredDate: '19.10.2025',
-            currency: 'RUB',
+            currency: 'RUR',
         }
     },
 },
@@ -634,7 +634,7 @@ const bankClients = [{
         active: true,
         activetedDate: '02.04.2016',
         expiredDate: '02.04.2028',
-        currency: 'RUB',
+        currency: 'RUR',
     },
     credit: {
         ownBalance: {
@@ -642,7 +642,7 @@ const bankClients = [{
             active: false,
             activetedDate: '02.04.2016',
             expiredDate: '02.04.2028',
-            currency: 'RUB',
+            currency: 'RUR',
         },
         creditBalance: {
             creditBalance: 35000,
@@ -650,7 +650,7 @@ const bankClients = [{
             active: true,
             activetedDate: '02.04.2021',
             expiredDate: '02.04.2032',
-            currency: 'RUB',
+            currency: 'RUR',
         }
     },
 },
@@ -692,7 +692,7 @@ const bankClients = [{
         active: false,
         activetedDate: '10.10.2014',
         expiredDate: '10.10.2024',
-        currency: 'RUB'
+        currency: 'RUR'
     },
     credit: {
         ownBalance: {

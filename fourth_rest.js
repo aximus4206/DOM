@@ -267,8 +267,11 @@ class RestView {
     }
 
     deleteWorker(index) {
+        this.information.leftCol.innerHTML = ' ';
+        this.information.rightCol.innerHTML = ' ';
         this.data.splice(index, 1);
         this.showWorker();
+        this.aboutRestoraunt();
     }
 
     modifyWorker(event, i) {
