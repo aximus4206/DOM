@@ -173,23 +173,23 @@ class RestView {
         <h2>Operate window</h2>
         <div class="modal-item">
             <p> Name </p>
-            <input class="modal-input" type="text" placeholder="Type worker name" name="name"> 
+            <input class="modal-name field" type="text" placeholder="Type worker name" name="name"> 
         </div>
         <div class="modal-item">
             <p> Surname </p>
-            <input class="modal-input" type="text" placeholder="Type worker surname" name="surname"> 
+            <input class="modal-surname field" type="text" placeholder="Type worker surname" name="surname"> 
         </div>
         <div class="modal-item">
             <p> Department </p>
-            <input class="modal-input" type="text" placeholder="Type worker department" name="department"> 
+            <input class="modal-dep field" type="text" placeholder="Type worker department" name="department"> 
         </div>
         <div class="modal-item">
             <p> Position </p>
-            <input class="modal-input" type="text" placeholder="Type worker position" name="position"> 
+            <input class="modal-pos field" type="text" placeholder="Type worker position" name="position"> 
         </div>
         <div class="modal-item">
             <p> Salary </p>
-            <input class="modal-input" type="text" placeholder="Type worker salary" name="salary"> 
+            <input class="modal-salary field" type="text" placeholder="Type worker salary" name="salary"> 
         </div>
         <div class="modal-check">
             <p> Dismissed </p>
@@ -210,7 +210,7 @@ class RestView {
         button.innerText = 'Confirm';
         confirmButton.appendChild(button);
 
-        confirmButton.addEventListener('click', this.createNewWorker.bind(this, index));
+
 
         const closeDiv = document.createElement('div');
         closeDiv.className = 'closeDiv';
@@ -222,7 +222,18 @@ class RestView {
         closeDiv.appendChild(buttonClose);
 
         closeDiv.addEventListener('click', this.closeWindow.bind(this));
+
+
+
+
+
+
+        confirmButton.addEventListener('click', this.createNewWorker.bind(this, index));
+
+
+
     }
+
 
     createWindow(data) {
         this.modalValue = false;
@@ -242,6 +253,9 @@ class RestView {
         event.preventDefault();
 
         let newWorker = new FormData(event.target.closest('form'));
+        let regularExpName = /^[a-zA-Z]{4,18}$/;
+        let regularExpDep = /^[\d]{1}$/;
+        let regularExpSal = /^[\d]{1,9}$/;
 
         this.data.unshift({
             name: newWorker.get('name') || 'Name',
@@ -251,7 +265,32 @@ class RestView {
             salary: Number(newWorker.get('salary')) || 'Salary',
             dismissed: newWorker.get('dismissed') || false,
         });
-        this.showWorker();
+        if (this.data[0].name.match(regularExpName) && this.data[0].name !== 0) {
+            if (this.data[0].surname.match(regularExpName) && this.data[0].surname !== 0) {
+                if (regularExpDep.test(this.data[0].department) && this.data[0].department !== 0) {
+                    if (this.data[0].position.match(regularExpName) && this.data[0].position !== 0) {
+                        if (regularExpSal.test(this.data[0].salary) && this.data[0].salary !== 0) {
+                            this.showWorker();
+                        } else {
+                            alert('Typed incorrect value, or some of the fields are empty!');
+                            this.closeWindow();
+                        }
+                    } else {
+                        alert('Typed incorrect value, or some of the fields are empty!');
+                        this.closeWindow();
+                    }
+                } else {
+                    alert('Typed incorrect value, or some of the fields are empty!');
+                    this.closeWindow();
+                }
+            } else {
+                alert('Typed incorrect value, or some of the fields are empty!');
+                this.closeWindow();
+            }
+        } else {
+            alert('Typed incorrect value, or some of the fields are empty!');
+            this.closeWindow();
+        }
     }
 
     createNewWorker(index, event) {
@@ -278,6 +317,9 @@ class RestView {
         event.preventDefault();
 
         let workerModify = new FormData(event.target.closest('form'));
+        let regularExpName = /^[a-zA-Z]{4,18}$/;
+        let regularExpDep = /^[\d]{1}$/;
+        let regularExpSal = /^[\d]{1,9}$/;
 
         this.data[i].name = workerModify.get('name') || this.data[i].name;
         this.data[i].surname = workerModify.get('surname') || this.data[i].surname;
@@ -286,8 +328,32 @@ class RestView {
         this.data[i].salary = workerModify.get('salary') || this.data[i].salary;
         this.data[i].dismissed = workerModify.get('dismissed') || this.data[i].dismissed;
 
-        this.showWorker();
+        if (this.data[i].name.match(regularExpName) && this.data[i].name !== 0) {
+            if (this.data[i].surname.match(regularExpName) && this.data[i].surname !== 0) {
+                if (regularExpDep.test(this.data[i].department) && this.data[i].department !== 0) {
+                    if (this.data[i].position.match(regularExpName) && this.data[i].position !== 0) {
+                        if (regularExpSal.test(this.data[i].salary) && this.data[i].salary !== 0) {
+                            this.showWorker();
+                        } else {
+                            alert('Typed incorrect value, or some of the fields are empty!');
+                            this.closeWindow();
+                        }
+                    } else {
+                        alert('Typed incorrect value, or some of the fields are empty!');
+                        this.closeWindow();
+                    }
+                } else {
+                    alert('Typed incorrect value, or some of the fields are empty!');
+                    this.closeWindow();
+                }
+            } else {
+                alert('Typed incorrect value, or some of the fields are empty!');
+                this.closeWindow();
+            }
+        } else {
+            alert('Typed incorrect value, or some of the fields are empty!');
+            this.closeWindow();
+        }
     }
-
 }
 const restorauntView = new RestView(workersArr);

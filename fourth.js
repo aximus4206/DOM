@@ -397,15 +397,6 @@ class Restoraunt {
                 ++department[value.department];
             };
         });
-        // for (let i = 0; i < workersArr.length; i++) {
-        //     if (department[workersArr[i].department] === undefined) {
-        //         department[workersArr[i].department] = 0;
-        //     }
-        //     if (workersArr[i].dismissed === dismissed) {
-        //         ++department[workersArr[i].department];
-        //     }
-
-        // }
         department.shift();
         return department;
     };
@@ -498,15 +489,6 @@ class Restoraunt {
 
 
 const rest = new Restoraunt(workersArr);
-
-// console.log(rest.countWholeSalaryDepartment(false));
-// console.log(rest.dismissedWorkers(false));
-// console.log(rest.middleDepartmentSalary(false));
-// console.log(rest.minDepartmentSalary(false));
-// console.log(rest.maxDepartmentSalary(false));
-// console.log(rest.minPositionSalary(false));
-// console.log(rest.maxPositionSalary(false));
-// console.log(rest.showDepartmentWithoutPosition('deputyhead'));
 
 
 const bankClients = [{
