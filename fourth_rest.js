@@ -210,8 +210,6 @@ class RestView {
         button.innerText = 'Confirm';
         confirmButton.appendChild(button);
 
-
-
         const closeDiv = document.createElement('div');
         closeDiv.className = 'closeDiv';
         buttonContainer.appendChild(closeDiv);
@@ -222,18 +220,8 @@ class RestView {
         closeDiv.appendChild(buttonClose);
 
         closeDiv.addEventListener('click', this.closeWindow.bind(this));
-
-
-
-
-
-
         confirmButton.addEventListener('click', this.createNewWorker.bind(this, index));
-
-
-
     }
-
 
     createWindow(data) {
         this.modalValue = false;
@@ -265,28 +253,13 @@ class RestView {
             salary: Number(newWorker.get('salary')) || 'Salary',
             dismissed: newWorker.get('dismissed') || false,
         });
-        if (this.data[0].name.match(regularExpName) && this.data[0].name !== 0) {
-            if (this.data[0].surname.match(regularExpName) && this.data[0].surname !== 0) {
-                if (regularExpDep.test(this.data[0].department) && this.data[0].department !== 0) {
-                    if (this.data[0].position.match(regularExpName) && this.data[0].position !== 0) {
-                        if (regularExpSal.test(this.data[0].salary) && this.data[0].salary !== 0) {
-                            this.showWorker();
-                        } else {
-                            alert('Typed incorrect value, or some of the fields are empty!');
-                            this.closeWindow();
-                        }
-                    } else {
-                        alert('Typed incorrect value, or some of the fields are empty!');
-                        this.closeWindow();
-                    }
-                } else {
-                    alert('Typed incorrect value, or some of the fields are empty!');
-                    this.closeWindow();
-                }
-            } else {
-                alert('Typed incorrect value, or some of the fields are empty!');
-                this.closeWindow();
-            }
+        if (this.data[0].name.match(regularExpName) &&
+            this.data[0].name !== 0 && this.data[0].surname.match(regularExpName) &&
+            this.data[0].surname !== 0 && regularExpDep.test(this.data[0].department) &&
+            this.data[0].department !== 0 &&
+            this.data[0].position.match(regularExpName) && this.data[0].position !== 0 &&
+            regularExpSal.test(this.data[0].salary) && this.data[0].salary !== 0) {
+            this.showWorker();
         } else {
             alert('Typed incorrect value, or some of the fields are empty!');
             this.closeWindow();
@@ -313,7 +286,7 @@ class RestView {
         this.aboutRestoraunt();
     }
 
-    modifyWorker(event, i) {
+    modifyWorker(event, index) {
         event.preventDefault();
 
         let workerModify = new FormData(event.target.closest('form'));
@@ -321,35 +294,19 @@ class RestView {
         let regularExpDep = /^[\d]{1}$/;
         let regularExpSal = /^[\d]{1,9}$/;
 
-        this.data[i].name = workerModify.get('name') || this.data[i].name;
-        this.data[i].surname = workerModify.get('surname') || this.data[i].surname;
-        this.data[i].department = workerModify.get('department') || this.data[i].department;
-        this.data[i].position = workerModify.get('position') || this.data[i].position;
-        this.data[i].salary = workerModify.get('salary') || this.data[i].salary;
-        this.data[i].dismissed = workerModify.get('dismissed') || this.data[i].dismissed;
+        this.data[index].name = workerModify.get('name') || this.data[index].name;
+        this.data[index].surname = workerModify.get('surname') || this.data[index].surname;
+        this.data[index].department = workerModify.get('department') || this.data[index].department;
+        this.data[index].position = workerModify.get('position') || this.data[index].position;
+        this.data[index].salary = workerModify.get('salary') || this.data[index].salary;
+        this.data[index].dismissed = workerModify.get('dismissed') || this.data[index].dismissed;
 
-        if (this.data[i].name.match(regularExpName) && this.data[i].name !== 0) {
-            if (this.data[i].surname.match(regularExpName) && this.data[i].surname !== 0) {
-                if (regularExpDep.test(this.data[i].department) && this.data[i].department !== 0) {
-                    if (this.data[i].position.match(regularExpName) && this.data[i].position !== 0) {
-                        if (regularExpSal.test(this.data[i].salary) && this.data[i].salary !== 0) {
-                            this.showWorker();
-                        } else {
-                            alert('Typed incorrect value, or some of the fields are empty!');
-                            this.closeWindow();
-                        }
-                    } else {
-                        alert('Typed incorrect value, or some of the fields are empty!');
-                        this.closeWindow();
-                    }
-                } else {
-                    alert('Typed incorrect value, or some of the fields are empty!');
-                    this.closeWindow();
-                }
-            } else {
-                alert('Typed incorrect value, or some of the fields are empty!');
-                this.closeWindow();
-            }
+        if (this.data[index].name.match(regularExpName) && this.data[index].name !== 0 &&
+            this.data[index].surname.match(regularExpName) && this.data[index].surname !== 0 &&
+            regularExpDep.test(this.data[index].department) && this.data[index].department !== 0 &&
+            this.data[index].position.match(regularExpName) && this.data[index].position !== 0 &&
+            regularExpSal.test(this.data[index].salary) && this.data[index].salary !== 0) {
+            this.showWorker();
         } else {
             alert('Typed incorrect value, or some of the fields are empty!');
             this.closeWindow();

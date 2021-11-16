@@ -206,43 +206,18 @@ class BankView {
                 },
             },
         });
-        if (this.data[0].name.match(regularExpName) && this.data[0].name !== 0) {
-            if (this.data[0].surname.match(regularExpName) && this.data[0].surname !== 0) {
-                if (regularExpBal.test(this.data[0].credit.ownBalance.ownBalance) && this.data[0].credit.ownBalance.ownBalance !== 0) {
-                    if (this.data[0].credit.ownBalance.activetedDate.match(regularDate) && this.data[0].credit.ownBalance.activetedDate !== 0) {
-                        if (this.data[0].credit.ownBalance.expiredDate.match(regularDate) && this.data[0].credit.ownBalance.expiredDate !== 0) {
-                            if (regularExpBal.test(this.data[0].credit.creditBalance.creditBalance) && this.data[0].credit.creditBalance.creditBalance !== 0) {
-                                if (regularExpBal.test(this.data[0].credit.creditBalance.creditLimit) && this.data[0].credit.creditBalance.creditLimit !== 0) {
-                                    this.showClient();
-                                } else {
-                                    alert('Typed incorrect value, or some of the fields are empty!');
-                                    this.closeWindow();
-                                }
-                            } else {
-                                alert('Typed incorrect value, or some of the fields are empty!');
-                                this.closeWindow();
-                            }
-                        } else {
-                            alert('Typed incorrect value, or some of the fields are empty!');
-                            this.closeWindow();
-                        }
-                    } else {
-                        alert('Typed incorrect value, or some of the fields are empty!');
-                        this.closeWindow();
-                    }
-                } else {
-                    alert('Typed incorrect value, or some of the fields are empty!');
-                    this.closeWindow();
-                }
-            } else {
-                alert('Typed incorrect value, or some of the fields are empty!');
-                this.closeWindow();
-            }
+        if (this.data[0].name.match(regularExpName) && this.data[0].name !== 0 &&
+            this.data[0].surname.match(regularExpName) && this.data[0].surname !== 0 &&
+            regularExpBal.test(this.data[0].credit.ownBalance.ownBalance) && this.data[0].credit.ownBalance.ownBalance !== 0 &&
+            this.data[0].credit.ownBalance.activetedDate.match(regularDate) && this.data[0].credit.ownBalance.activetedDate !== 0 &&
+            this.data[0].credit.ownBalance.expiredDate.match(regularDate) && this.data[0].credit.ownBalance.expiredDate !== 0 &&
+            regularExpBal.test(this.data[0].credit.creditBalance.creditBalance) && this.data[0].credit.creditBalance.creditBalance !== 0 &&
+            regularExpBal.test(this.data[0].credit.creditBalance.creditLimit) && this.data[0].credit.creditBalance.creditLimit !== 0) {
+            this.showClient();
         } else {
             alert('Typed incorrect value, or some of the fields are empty!');
             this.closeWindow();
         }
-
     }
 
     createNewClient(index, event) {
@@ -263,7 +238,7 @@ class BankView {
         this.aboutBank();
     }
 
-    modifyClient(event, i) {
+    modifyClient(event, index) {
         event.preventDefault();
 
         let workerModify = new FormData(event.target.closest('form'));
@@ -271,47 +246,23 @@ class BankView {
         let regularExpBal = /^[\d]{1,12}$/;
         let regularDate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
 
-        this.data[i].name = workerModify.get('name') || this.data[i].name;
-        this.data[i].surname = workerModify.get('surname') || this.data[i].surname;
-        this.data[i].credit.ownBalance.ownBalance = workerModify.get('balance') || this.data[i].credit.ownBalance.ownBalance;
-        this.data[i].credit.ownBalance.activetedDate = workerModify.get('activetedDate') || this.data[i].credit.ownBalance.activetedDate;
-        this.data[i].credit.ownBalance.expiredDate = workerModify.get('expiredDate') || this.data[i].credit.ownBalance.expiredDate;
-        this.data[i].credit.creditBalance.creditBalance = workerModify.get('creditBalance') || this.data[i].credit.creditBalance.creditBalance;
-        this.data[i].credit.creditBalance.creditLimit = workerModify.get('creditLimit') || this.data[i].credit.creditBalance.creditLimit;
-        this.data[i].isActive = workerModify.get('isActive') || this.data[i].isActive;
+        this.data[index].name = workerModify.get('name') || this.data[index].name;
+        this.data[index].surname = workerModify.get('surname') || this.data[index].surname;
+        this.data[index].credit.ownBalance.ownBalance = workerModify.get('balance') || this.data[index].credit.ownBalance.ownBalance;
+        this.data[index].credit.ownBalance.activetedDate = workerModify.get('activetedDate') || this.data[index].credit.ownBalance.activetedDate;
+        this.data[index].credit.ownBalance.expiredDate = workerModify.get('expiredDate') || this.data[index].credit.ownBalance.expiredDate;
+        this.data[index].credit.creditBalance.creditBalance = workerModify.get('creditBalance') || this.data[index].credit.creditBalance.creditBalance;
+        this.data[index].credit.creditBalance.creditLimit = workerModify.get('creditLimit') || this.data[index].credit.creditBalance.creditLimit;
+        this.data[index].isActive = workerModify.get('isActive') || this.data[index].isActive;
 
-        if (this.data[i].name.match(regularExpName) && this.data[i].name !== 0) {
-            if (this.data[i].surname.match(regularExpName) && this.data[i].surname !== 0) {
-                if (regularExpBal.test(this.data[i].credit.ownBalance.ownBalance) && this.data[i].credit.ownBalance.ownBalance !== 0) {
-                    if (this.data[i].credit.ownBalance.activetedDate.match(regularDate) && this.data[i].credit.ownBalance.activetedDate !== 0) {
-                        if (this.data[i].credit.ownBalance.expiredDate.match(regularDate) && this.data[i].credit.ownBalance.expiredDate !== 0) {
-                            if (regularExpBal.test(this.data[i].credit.creditBalance.creditBalance) && this.data[i].credit.creditBalance.creditBalance !== 0) {
-                                if (regularExpBal.test(this.data[i].credit.creditBalance.creditLimit) && this.data[i].credit.creditBalance.creditLimit !== 0) {
-                                    this.showClient();
-                                } else {
-                                    alert('Typed incorrect value, or some of the fields are empty!');
-                                    this.closeWindow();
-                                }
-                            } else {
-                                alert('Typed incorrect value, or some of the fields are empty!');
-                                this.closeWindow();
-                            }
-                        } else {
-                            alert('Typed incorrect value, or some of the fields are empty!');
-                            this.closeWindow();
-                        }
-                    } else {
-                        alert('Typed incorrect value, or some of the fields are empty!');
-                        this.closeWindow();
-                    }
-                } else {
-                    alert('Typed incorrect value, or some of the fields are empty!');
-                    this.closeWindow();
-                }
-            } else {
-                alert('Typed incorrect value, or some of the fields are empty!');
-                this.closeWindow();
-            }
+        if (this.data[index].name.match(regularExpName) && this.data[index].name !== 0 &&
+            this.data[index].surname.match(regularExpName) && this.data[index].surname !== 0 &&
+            regularExpBal.test(this.data[index].credit.ownBalance.ownBalance) && this.data[index].credit.ownBalance.ownBalance !== 0 &&
+            this.data[index].credit.ownBalance.activetedDate.match(regularDate) && this.data[index].credit.ownBalance.activetedDate !== 0 &&
+            this.data[index].credit.ownBalance.expiredDate.match(regularDate) && this.data[index].credit.ownBalance.expiredDate !== 0 &&
+            regularExpBal.test(this.data[index].credit.creditBalance.creditBalance) && this.data[index].credit.creditBalance.creditBalance !== 0 &&
+            regularExpBal.test(this.data[index].credit.creditBalance.creditLimit) && this.data[index].credit.creditBalance.creditLimit !== 0) {
+            this.showClient();
         } else {
             alert('Typed incorrect value, or some of the fields are empty!');
             this.closeWindow();
